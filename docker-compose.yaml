@@ -1,0 +1,10 @@
+services:
+  aliddns:
+    image: uhub.service.ucloud.cn/naturelr/aliddns:latest
+    container_name: aliddns
+    environment:
+      - ALIDDNS_KEY=<KERY
+      - ALIDDNS_CERT=<CERT>
+      - ALIDDNS_DOMAIN=<DOMAIN>
+      #- ALIDDNS_CRON=
+    restart: always

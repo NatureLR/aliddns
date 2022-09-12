@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+set -e 
+set -x
+
+ARCH=$(dpkg --print-architecture)
+
+mkdir -p ~/debbuild/DEBIAN
+mkdir -p ~/debbuild/usr/local/bin
+cp /data/artifacts/tgz/$PROJECT-$VERSION.tar.gz .
+cp -r /data/build/deb/common/* ~/debbuild/DEBIAN/
+
+tar -xzf $PROJECT-$VERSION.tar.gz 
+make -C $PROJECT build
+
+cp $PROJECT/artifacts/bin/$PROJECT /root/debbuild/usr/local/bin
+
+# systemd
+if [ -d "/data/build/systemd" ];then 
+mkdir -p ~/debbuild/usr/lib/systemd/system/
+cp /data/build/systemd/* ~/debbuild/usr/lib/systemd/system/
+fi
+
+echo Source: $PROJECT >> ~/debbuild/DEBIAN/control
+echo Package: $PROJECT >> ~/debbuild/DEBIAN/control
+echo Version: $VERSION >> ~/debbuild/DEBIAN/control
+echo Standards-Version: $VERSION >> ~/debbuild/DEBIAN/control
+echo Architecture: $ARCH >> ~/debbuild/DEBIAN/control
+
+dpkg-deb --build /root/debbuild/ $PROJECT-$VERSION-$ARCH.deb
+
+mv $PROJECT-$VERSION-$ARCH.deb /data/artifacts/deb
+

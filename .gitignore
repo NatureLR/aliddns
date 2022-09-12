@@ -1,0 +1,5 @@
+aliddns
+.vscode
+bin/
+.DS_Store
+artifacts/
