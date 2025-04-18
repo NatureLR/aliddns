@@ -1,6 +1,6 @@
 services:
   aliddns:
-    image: uhub.service.ucloud.cn/naturelr/aliddns:latest
+    image: naturelr/aliddns:latest
     container_name: aliddns
     environment:
       - ALIDDNS_KEY=<KERY

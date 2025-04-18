@@ -70,7 +70,7 @@ tgz: ## 打包为tar包
 	@$(TGZ)
 
 .PHONY: rpm
-rpm: ## 打包伟rpm包
+rpm: ## 打包为rpm包
 	@echo $(GREEN)打包rpm
 	@mkdir -p $(RPM_DIR)/RPMS $(RPM_DIR)/SRPMS
 	@$(CHECK_TGZ)
