@@ -18,5 +18,5 @@ docker run \
 --env ALIDDNS_KEY=<KERY> \
 --env ALIDDNS_CERT=<CERT> \
 --env ALIDDNS_DOMAIN=<DOMAIN> \
-uhub.service.ucloud.cn/naturelr/aliddns:latest
+naturelr/aliddns:latest
 ```
