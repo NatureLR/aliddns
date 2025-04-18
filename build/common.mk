@@ -14,7 +14,9 @@ endif
 # go 参数
 GOOS       ?= $(shell go env GOOS)
 GOARCH     ?= $(shell go env GOARCH)
-GOVERSION  ?= 1.19
+# 使用本地go版本作为go版本
+# GOVERSION  ?= $(shell go version | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')
+GOVERSION  ?= 1.24
 
 # 目录
 ROOT_DIR   := $(realpath $(CURDIR))
@@ -61,7 +63,7 @@ RPM_BUILD_IMAGE  ?= centos:7
 DEB_BUILD_IMAGE  ?= debian:buster
 
 # 自己的仓库
-DOCKER_REPO       = uhub.service.ucloud.cn/naturelr
+DOCKER_REPO       = 
 IMAGE_ADDR        = $(DOCKER_REPO)/$(PROJECT):$(VERSION)
 IMAGE_ADDR_LATEST = $(DOCKER_REPO)/$(PROJECT):latest
 ifeq ($(DOCKER_REPO),)
@@ -70,8 +72,8 @@ IMAGE_ADDR_LATEST = $(PROJECT):latest
 endif
 
 DOCKER_BUILD     := docker build \
-	-t $(DOCKER_REPO)/$(PROJECT):latest \
-	-t $(DOCKER_REPO)/$(PROJECT):$(VERSION) \
+	-t $(IMAGE_ADDR) \
+	-t $(IMAGE_ADDR_LATEST) \
 	--build-arg RUN_IMAGE=$(GO_RUN_IMAGE) \
 	--build-arg BUILD_IMAGE=$(GO_BUILD_IMAGE) \
 	-f $(BUILD_DIR)/Dockerfile \

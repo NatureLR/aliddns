@@ -1,0 +1,35 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aliddns
+spec:
+  selector:
+    matchLabels:
+      app: aliddns
+  template:
+    metadata:
+      labels:
+        app: aliddns
+    spec:
+      containers:
+      - name: aliddns
+        # 此处需要替换为docker镜像地址
+        image: <Image>
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        #ports:
+        #- containerPort: <Port>
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aliddns
+spec:
+  selector:
+    app: aliddns
+  ports:
+  #- port: <Port>
+  #  targetPort: <Target Port>
