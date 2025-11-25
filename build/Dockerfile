@@ -3,7 +3,7 @@ ARG BUILD_IMAGE=golang:1.25-alpine
 ARG RUN_IMAGE=alpine:3
 
 # 编译镜像
-FROM ${BUILD_IMAGE} as build
+FROM ${BUILD_IMAGE} AS build
 
 ENV ROOT_DIR=/build
 WORKDIR /build
