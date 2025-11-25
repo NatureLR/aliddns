@@ -20,8 +20,8 @@ jobs:
         run: | 
               if [ "${{ github.event_name }}" == "push" ]; then
                 if [ "${{ startsWith(github.ref, 'refs/tags/') }}" == "true" ]; then
-                  echo "Tag: ${{ github.ref }}"
-                  echo "TAG_NAME=${{ github.ref }}" >> $GITHUB_ENV
+                  echo "Tag: ${{ github.ref_name }}"
+                  echo "TAG_NAME=${{ github.ref_name }}" >> $GITHUB_ENV
                 else
                   short_commit_id=$(git rev-parse --short "${{ github.sha }}")
                   echo "Short Commit ID: $short_commit_id"
