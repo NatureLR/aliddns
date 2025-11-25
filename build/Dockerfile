@@ -1,5 +1,5 @@
 # 编译镜像 golang:x.y-alpine
-ARG BUILD_IMAGE=golang:1.24-alpine
+ARG BUILD_IMAGE=golang:1.25-alpine
 ARG RUN_IMAGE=alpine:3
 
 # 编译镜像

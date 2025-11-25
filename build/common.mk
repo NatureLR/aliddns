@@ -16,7 +16,7 @@ GOOS       ?= $(shell go env GOOS)
 GOARCH     ?= $(shell go env GOARCH)
 # 使用本地go版本作为go版本
 # GOVERSION  ?= $(shell go version | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')
-GOVERSION  ?= 1.24
+GOVERSION  ?= 1.25
 
 # 目录
 ROOT_DIR   := $(realpath $(CURDIR))
